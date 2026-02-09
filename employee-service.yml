@@ -1,2 +1,2 @@
 employee:
-  message: "Hello from Employee Service"
+  message: "Hello from Employee Service Updated after adding refresh property"
