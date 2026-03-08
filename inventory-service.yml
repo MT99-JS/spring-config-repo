@@ -1,0 +1,40 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ""
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+
+  kafka:
+    bootstrap-servers: localhost:9092
+
+  cloud:
+    stream:
+      bindings:
+        orderCreatedConsumer-in-0:
+          destination: order-created
+          group: payment-group
+
+        inventoryReserved-out-0:
+          destination: inventory-reserved
+          content-type: application/json
+
+        inventoryReservedFailure-out-0:
+          destination: inventoryReserved-failed
+          content-type: application/json
