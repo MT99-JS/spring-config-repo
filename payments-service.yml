@@ -38,3 +38,5 @@ spring:
         paymentCreated-out-0:
           destination: payment-created
           content-type: application/json
+    function:
+      definition: inventoryReservedConsumer;inventoryReservedFailedConsumer
